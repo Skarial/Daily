@@ -4,7 +4,7 @@
 }
 
 body {
-  background-color: rgb(71 49 98);
+  background-color: rgb(6, 192, 149);
 }
 
 .titre {
@@ -80,63 +80,60 @@ body {
 .bouton {
   position: relative;
   top: 90px;
-  right: -36px;
-  box-shadow: 0px 0px 10px 5px #2f1644;
-  color: #ec2424;
-  background-color: #5c2896;
+  right: -47px;
+  color: #730d24ad;
+  background-color: #c13dd3;
   font-size: 47px;
-  border: 2px solid rgb(26, 25, 25);
-  border-radius: 18px;
+  border: 2px solid #54f4037a;
+  border-radius: 9px;
   display: block;
   line-height: 0.8;
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
   margin-bottom: auto;
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 3rem;
   font-family: "Salsa", cursive;
 }
 
 .go {
   position: relative;
-  right: 36px;
-  bottom: -26px;
-  box-shadow: 0px 0px 10px 5px #2f1644;
-  color: #ec2424;
-  background-color: #5c2896;
+  right: 46px;
+  bottom: -39px;
+  color: #730d24ad;
+  background-color: #c13dd3;
   font-size: 39px;
-  border: 2px solid rgb(26, 25, 25);
-  border-radius: 18px;
+  border: 2px solid #54f4037a;
+  border-radius: 9px;
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
   margin-bottom: auto;
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 3rem;
   font-family: "Salsa", cursive;
 }
 
 .bouton_plus {
-  top: -4px;
-  right: -115px;
+  top: 9px;
+  right: -121px;
 }
 
 .bouton_moins {
-  top: -39px;
-  left: -115px;
+  top: -27px;
+  left: -121px;
 }
 
 .bouton_plus,
 .bouton_moins {
-  background-color: #5c2896;
+  background-color: #c13dd3;
   position: relative;
-  box-shadow: 0px 0px 10px 5px #2f1644;
-  color: #ec2424;
+  color: #730d24ad;
   font-size: 20px;
-  border: 2px solid rgb(26, 25, 25);
-  border-radius: 10px;
+  border: 2px solid #54f4037a;
+  border-radius: 9px;
   display: block;
   margin-left: auto;
   margin-right: auto;
