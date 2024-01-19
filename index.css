@@ -81,7 +81,7 @@ body {
   position: relative;
   top: 90px;
   right: -47px;
-  color: #730d24ad;
+  color: #ffcc00;
   background-color: #c13dd3;
   font-size: 47px;
   border: 2px solid #54f4037a;
@@ -100,8 +100,8 @@ body {
 .go {
   position: relative;
   right: 46px;
-  bottom: -39px;
-  color: #730d24ad;
+  bottom: -41px;
+  color: #ffcc00;
   background-color: #c13dd3;
   font-size: 39px;
   border: 2px solid #54f4037a;
@@ -130,7 +130,7 @@ body {
 .bouton_moins {
   background-color: #c13dd3;
   position: relative;
-  color: #730d24ad;
+  color: #ffcc00;
   font-size: 20px;
   border: 2px solid #54f4037a;
   border-radius: 9px;
