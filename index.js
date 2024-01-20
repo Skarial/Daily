@@ -1,50 +1,28 @@
-var initialCount = 0; // Ajout de la variable pour stocker la valeur initiale du minuteur
-var count = 0; // Initialiser à 0 secondes
-var timerTimeout;
-var isTimerRunning = false;
-var display = document.querySelector("#time");
-var audioElement = new Audio("assets/bang.wav");
-var imgBombe = document.querySelector(".img_bombe");
+let initialCount = 0;
+let count = 0;
+let timerTimeout;
+let isTimerRunning = false;
+const display = document.querySelector("#time");
+const audioElement = new Audio("assets/bang.wav");
+const imgBombe = document.querySelector(".img_bombe");
 
-function startTimer(duration) {
-  var minutes, seconds;
-
-  function update() {
-    minutes = parseInt(duration / 60, 10);
-    seconds = parseInt(duration % 60, 10);
-
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-
-    display.textContent = minutes + ":" + seconds;
-
-    if (duration === 0) {
-      handleTimerExpiration();
-    } else {
-      timerTimeout = setTimeout(function () {
-        update();
-      }, 1000);
-    }
-
-    duration--;
-  }
-
-  update();
+function updateTimerDisplay() {
+  const minutes = String(Math.floor(count / 60)).padStart(2, "0");
+  const seconds = String(count % 60).padStart(2, "0");
+  display.textContent = `${minutes}:${seconds}`;
 }
 
 function handleTimerExpiration() {
   imgBombe.src = "assets/boum.png";
-  audioElement.play().then(function () {
-    audioElement.addEventListener("ended", function () {
-      resetTimer();
-    });
+  audioElement.play().then(() => {
+    audioElement.addEventListener("ended", resetTimer);
   });
 
   isTimerRunning = false;
 }
 
 function resetTimer() {
-  count = initialCount; // Réinitialiser à la valeur initiale
+  count = initialCount;
   isTimerRunning = false;
   updateTimerDisplay();
   imgBombe.src = "assets/bombe.png";
@@ -52,27 +30,34 @@ function resetTimer() {
   timerTimeout = null;
 }
 
-function updateTimerDisplay() {
-  var minutes = parseInt(count / 60, 10);
-  var seconds = parseInt(count % 60, 10);
+function startTimer(duration) {
+  function update() {
+    if (duration === 0) {
+      handleTimerExpiration();
+    } else {
+      timerTimeout = setTimeout(update, 1000);
+    }
 
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  seconds = seconds < 10 ? "0" + seconds : seconds;
+    const minutes = String(Math.floor(duration / 60)).padStart(2, "0");
+    const seconds = String(duration % 60).padStart(2, "0");
+    display.textContent = `${minutes}:${seconds}`;
+    duration--;
+  }
 
-  display.textContent = minutes + ":" + seconds;
+  update();
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  var plusButton = document.querySelector(".bouton_plus");
-  var moinsButton = document.querySelector(".bouton_moins");
-  var suivantButton = document.querySelector(".bouton_suivant");
-  var goButton = document.querySelector(".bouton_go");
-  var resetButton = document.querySelector("#resetTimer");
+  const plusButton = document.querySelector(".bouton_plus");
+  const moinsButton = document.querySelector(".bouton_moins");
+  const suivantButton = document.querySelector(".bouton_suivant");
+  const goButton = document.querySelector(".bouton_go");
+  const resetButton = document.querySelector("#resetTimer");
 
   plusButton.addEventListener("click", function () {
     if (!isTimerRunning) {
       count += 30;
-      initialCount = count; // Mettre à jour la valeur initiale lors de l'ajout de temps
+      initialCount = count;
       updateTimerDisplay();
     }
   });
@@ -80,14 +65,12 @@ document.addEventListener("DOMContentLoaded", function () {
   moinsButton.addEventListener("click", function () {
     if (!isTimerRunning && count >= 30) {
       count -= 30;
-      initialCount = count; // Mettre à jour la valeur initiale lors de la soustraction de temps
+      initialCount = count;
       updateTimerDisplay();
     }
   });
 
-  suivantButton.addEventListener("click", function () {
-    resetTimer();
-  });
+  suivantButton.addEventListener("click", resetTimer);
 
   updateTimerDisplay();
 
