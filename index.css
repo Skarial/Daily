@@ -1,16 +1,21 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background-color: rgb(6, 192, 149);
+  background-color: rgb(24 26 26);
+  height: 100vh; /* 100% de la hauteur de la vue (viewport height) */
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .titre {
   background: repeating-radial-gradient(
     circle farthest-side at center center,
-    rgb(207 156 18) 0%,
+    rgba(68, 71, 69, 0.306) 0%,
     #34c5cf 100%
   );
   background-clip: text;
@@ -77,14 +82,14 @@ body {
   font-family: "Salsa", cursive;
 }
 
-.bouton {
+.bouton_suivant {
   position: relative;
-  top: 90px;
+  top: 49px;
   right: -47px;
   color: #ffcc00;
-  background-color: #c13dd3;
+  background-color: #406c79;
   font-size: 47px;
-  border: 2px solid #54f4037a;
+  border: 2px solid #2039137a;
   border-radius: 9px;
   display: block;
   line-height: 0.8;
@@ -97,14 +102,19 @@ body {
   font-family: "Salsa", cursive;
 }
 
-.go {
+.bouton_suivant:hover {
+  transform: rotate3d(1, 1, 1, 30deg);
+  transition: transform 1s ease;
+}
+
+.bouton_go {
   position: relative;
   right: 46px;
-  bottom: -41px;
+  bottom: -97px;
   color: #ffcc00;
-  background-color: #c13dd3;
+  background-color: #406c79;
   font-size: 39px;
-  border: 2px solid #54f4037a;
+  border: 2px solid #2039137a;
   border-radius: 9px;
   display: block;
   margin-left: auto;
@@ -116,23 +126,38 @@ body {
   font-family: "Salsa", cursive;
 }
 
+.bouton_go:hover {
+  transform: rotate3d(1, 1, 1, -30deg);
+  transition: transform 1s ease;
+}
+
 .bouton_plus {
-  top: 9px;
-  right: -121px;
+  top: 10px;
+  right: -122px;
+}
+
+.bouton_plus:hover {
+  transform: rotate3d(1, 1, 1, 30deg);
+  transition: transform 1s ease;
 }
 
 .bouton_moins {
-  top: -27px;
+  top: 137px;
   left: -121px;
+}
+
+.bouton_moins:hover {
+  transform: rotate3d(1, 1, 1, -30deg);
+  transition: transform 1s ease;
 }
 
 .bouton_plus,
 .bouton_moins {
-  background-color: #c13dd3;
+  background-color: #406c79;
   position: relative;
   color: #ffcc00;
   font-size: 20px;
-  border: 2px solid #54f4037a;
+  border: 2px solid #2039137a;
   border-radius: 9px;
   display: block;
   margin-left: auto;
@@ -144,20 +169,14 @@ body {
   font-family: "Salsa", cursive;
 }
 
-.bouton_plus:hover,
-.bouton_moins:hover {
-  animation: clignotement 1s infinite;
-}
-
-.bouton:active,
+.bouton_suivant:active,
 .bouton_plus:active,
 .bouton_moins:active,
-.go:active {
+.bouton_go:active {
   transform: translate(0px, 5px);
   -webkit-transform: translate(5px, 5px);
   border-bottom: 1px solid;
 }
-
 @keyframes clignote {
   0% {
     color: rgba(46, 46, 46, 0.61);
@@ -174,7 +193,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 30px #7763ec, 0 0 10px rgba(179, 161, 230, 0.41),
-      0 0 100px #bba1e6, 0 0 500px #9d67f3, 5px 9px 5px rgba(156, 154, 163, 0.5);
+      0 0 100px #3ca16a, 0 0 500px #2fc73e, 5px 9px 5px rgba(156, 154, 163, 0.5);
   }
   6% {
     color: rgba(46, 46, 46, 0.61);
@@ -191,7 +210,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 30px #7763ec, 0 0 10px rgba(179, 161, 230, 0.41),
-      0 0 100px #bba1e6, 0 0 500px #9d67f3, 5px 9px 5px rgba(156, 154, 163, 0.5);
+      0 0 100px #3ca16a, 0 0 500px #2fc73e, 5px 9px 5px rgba(156, 154, 163, 0.5);
   }
   12.5% {
     color: rgba(46, 46, 46, 0.61);
@@ -208,7 +227,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 30px #7763ec, 0 0 10px rgba(179, 161, 230, 0.41),
-      0 0 100px #bba1e6, 0 0 500px #9d67f3, 5px 9px 5px rgba(156, 154, 163, 0.5);
+      0 0 100px #3ca16a, 0 0 500px #2fc73e, 5px 9px 5px rgba(156, 154, 163, 0.5);
   }
   22.5% {
     color: rgba(46, 46, 46, 0.61);
