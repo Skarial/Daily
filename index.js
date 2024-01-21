@@ -1,53 +1,59 @@
-let initialCount = 0;
-let count = 0;
-let timerTimeout;
-let isTimerRunning = false;
-const display = document.querySelector("#time");
-const audioElement = new Audio("assets/bang.wav");
-const imgBombe = document.querySelector(".img_bombe");
+document.addEventListener("DOMContentLoaded", function () {
+  let initialCount = 0;
+  let count = 0;
+  let timerTimeout;
+  let isTimerRunning = false;
+  const display = document.querySelector("#time");
+  const audioElement = new Audio("assets/bang.wav");
+  const ticTacSound = new Audio("assets/tictac2.wav");
+  const imgBombe = document.querySelector(".img_bombe");
 
-function updateTimerDisplay() {
-  const minutes = String(Math.floor(count / 60)).padStart(2, "0");
-  const seconds = String(count % 60).padStart(2, "0");
-  display.textContent = `${minutes}:${seconds}`;
-}
-
-function handleTimerExpiration() {
-  imgBombe.src = "assets/boum.png";
-  audioElement.play().then(() => {
-    audioElement.addEventListener("ended", resetTimer);
-  });
-
-  isTimerRunning = false;
-}
-
-function resetTimer() {
-  count = initialCount;
-  isTimerRunning = false;
-  updateTimerDisplay();
-  imgBombe.src = "assets/bombe.png";
-  clearTimeout(timerTimeout);
-  timerTimeout = null;
-}
-
-function startTimer(duration) {
-  function update() {
-    if (duration === 0) {
-      handleTimerExpiration();
-    } else {
-      timerTimeout = setTimeout(update, 1000);
-    }
-
-    const minutes = String(Math.floor(duration / 60)).padStart(2, "0");
-    const seconds = String(duration % 60).padStart(2, "0");
+  function updateTimerDisplay() {
+    const minutes = String(Math.floor(count / 60)).padStart(2, "0");
+    const seconds = String(count % 60).padStart(2, "0");
     display.textContent = `${minutes}:${seconds}`;
-    duration--;
   }
 
-  update();
-}
+  function handleTimerExpiration() {
+    imgBombe.src = "assets/boum.png";
+    audioElement.play().then(() => {
+      audioElement.addEventListener("ended", resetTimer);
+    });
 
-document.addEventListener("DOMContentLoaded", function () {
+    // Arrêter le son tictac lorsque le minuteur arrive à zéro
+    ticTacSound.pause();
+    ticTacSound.currentTime = 0;
+
+    isTimerRunning = false;
+  }
+
+  function resetTimer() {
+    count = initialCount;
+    isTimerRunning = false;
+    updateTimerDisplay();
+    imgBombe.src = "assets/bombe.png";
+    clearTimeout(timerTimeout);
+    timerTimeout = null;
+  }
+
+  function startTimer(duration) {
+    function update() {
+      if (duration === 0) {
+        handleTimerExpiration();
+      } else {
+        timerTimeout = setTimeout(update, 1000);
+      }
+
+      const minutes = String(Math.floor(duration / 60)).padStart(2, "0");
+      const seconds = String(duration % 60).padStart(2, "0");
+      display.textContent = `${minutes}:${seconds}`;
+      duration--;
+    }
+
+    update();
+    ticTacSound.play();
+  }
+
   const plusButton = document.querySelector(".bouton_plus");
   const moinsButton = document.querySelector(".bouton_moins");
   const suivantButton = document.querySelector(".bouton_suivant");
