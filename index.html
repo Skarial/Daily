@@ -15,22 +15,28 @@
     />
   </head>
   <body>
-    <h1 class="titre">DAILY CROCKET</h1>
-    <h2 class="paragraphe">
-      Ceci n'est pas un exercice, je répète, ceci n'est pas un exercice!!!
-    </h2>
-    <div>
+    <header>
+      <h1 class="titre">DAILY CROCKET</h1>
+      <h2 class="paragraphe">
+        Ceci n'est pas un exercice, je répète, ceci n'est pas un exercice!!!
+      </h2>
+    </header>
+    <section class="media">
       <img class="img_bombe" src="assets/bombe.png" alt="Bombe" />
       <audio src="assets/bang.wav" id="explosionSound"></audio>
       <audio src="assets/tictac2.wav" id="ticTacSound"></audio>
-    </div>
-    <div class="timer" id="time"></div>
-    <div>
-      <button class="bouton_moins">-30s</button>
-      <button class="bouton_go">GO</button>
-      <button class="bouton_suivant">-></button>
-      <button class="bouton_plus">+30s</button>
-    </div>
+    </section>
+
+    <section class="time_chrono">
+      <div class="timer" id="time"></div>
+    </section>
+
+    <section class="time_btn">
+      <button class="btn_moins btn">-30s</button>
+      <button class="btn_go btn">GO</button>
+      <button class="btn_suivant btn">-></button>
+      <button class="btn_plus btn">+30s</button>
+    </section>
 
     <script src="index.js" defer></script>
   </body>

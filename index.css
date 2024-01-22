@@ -2,14 +2,25 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Climate Crisis", sans-serif;
 }
 
 body {
   height: 100vh;
+  width: 100vw;
+  padding: 5px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(7, 1fr);
   background-image: url("assets/Daily_Crocket.png");
   background-size: 100% 100%;
-  background-position: center center;
+  background-position: center;
   background-repeat: no-repeat;
+}
+
+header {
+  grid-column: 1/9;
+  grid-row: 1/2;
 }
 
 .titre {
@@ -21,7 +32,7 @@ body {
   );
   background-clip: text;
   font-family: "Caprasimo", serif;
-  font-size: 5rem;
+  font-size: 30px;
   margin: 0 auto;
   text-align: center;
   -webkit-background-clip: text;
@@ -32,114 +43,75 @@ body {
   background: #d3d717;
   background-clip: text;
   font-family: "Bungee Spice", sans-serif;
-  position: relative;
+  font-size: 14px;
   text-align: center;
-  top: 10px;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 1px black;
 }
 
-.img_bombe {
-  display: block;
-  height: 20rem;
-  margin: 0 auto;
-  position: relative;
-  top: 30px;
-  width: 20rem;
+.media {
+  grid-column: 1/9;
+  grid-row: 2/4;
 }
 
+.img_bombe,
 .img_boum {
   display: block;
-  height: 20rem;
   margin: 0 auto;
-  position: relative;
-  top: 30px;
-  width: 20rem;
+  height: 90%;
+}
+
+.time_chrono {
+  grid-column: 1/9;
+  grid-row: 5/6;
 }
 
 .timer {
   background: #ffa700;
   background-clip: text;
-  display: block;
-  font-family: "Climate Crisis", sans-serif;
-  font-size: 50px;
-  margin: 0 auto;
-  position: relative;
+  font-size: 30px;
   text-align: center;
-  top: 68px;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 2px black;
 }
 
-.bouton_suivant {
-  position: relative;
-  top: 39px;
-  right: -47px;
-  color: #ffa700;
-  font-size: 35px;
-  border: none;
-  background: none;
-  display: block;
-  margin: 10px auto;
-  font-family: "Climate Crisis", sans-serif;
+.time_btn {
+  grid-column: 1/9;
+  grid-row: 6/7;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  text-align: center;
+}
+
+.btn_suivant,
+.btn_go {
+  font-size: 25px;
   -webkit-text-stroke: 2px black;
 }
 
-.bouton_go {
-  position: relative;
-  right: 46px;
-  bottom: -97px;
-  color: #ffa700;
-  font-size: 35px;
-  border: none;
-  background: none;
-  display: block;
-  margin: 10px auto;
-  font-family: "Climate Crisis", sans-serif;
+.btn_plus,
+.btn_moins {
+  margin-top: 2vh;
   -webkit-text-stroke: 2px black;
+  font-size: 22px;
 }
 
-.bouton_plus {
-  top: 6px;
-  right: -124px;
-}
-
-.bouton_moins {
-  top: 154px;
-  left: -148px;
-}
-
-.bouton_plus,
-.bouton_moins {
-  position: relative;
-  color: #ffa700;
-  border: none;
-  background: none;
-  display: block;
-  margin: 10px auto;
-  font-family: "Climate Crisis", sans-serif;
-  -webkit-text-stroke: 2px black;
-  font-size: 20px;
-}
-
-.bouton_go:hover,
-.bouton_suivant:hover,
-.bouton_plus:hover,
-.bouton_moins:hover {
+.btn:hover {
   color: #2fc73e;
 }
 
-.bouton_suivant:active,
-.bouton_plus:active,
-.bouton_moins:active,
-.bouton_go:active {
+.btn:active {
   transform: translate(0px, 5px);
 }
 
-[class*="bouton"] {
+.btn {
+  color: #ffa700;
   cursor: pointer;
+  background: none;
+  border: none;
 }
 
 @keyframes clignote {
@@ -202,23 +174,28 @@ body {
   }
 }
 
-body {
-  font-size: 16px;
-  /* Ajoutez d'autres styles pour les écrans plus larges si nécessaire */
-}
-
-/* Styles pour les écrans de taille moyenne à petite (tablette) */
-@media only screen and (max-width: 768px) {
-  body {
-    font-size: 14px;
-    /* Ajoutez d'autres styles pour les tablettes si nécessaire */
+@media screen and (min-width: 901px) {
+  .titre {
+    font-size: 50px;
   }
-}
+  .paragraphe {
+    font-size: 30px;
+  }
 
-/* Styles pour les écrans petits (smartphones) */
-@media only screen and (max-width: 480px) {
-  body {
-    font-size: 12px;
-    /* Ajoutez d'autres styles pour les smartphones si nécessaire */
+  .img_bombe,
+  .img_boum {
+    margin-top: 3%;
+  }
+
+  .timer {
+    font-size: 45px;
+  }
+  .btn_go,
+  .btn_suivant {
+    font-size: 40px;
+  }
+  .btn_plus,
+  .btn_moins {
+    font-size: 37px;
   }
 }
