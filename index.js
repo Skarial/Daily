@@ -60,10 +60,10 @@ document.addEventListener("DOMContentLoaded", function () {
     ticTacSound.play();
   }
 
-  const plusButton = document.querySelector(".bouton_plus");
-  const moinsButton = document.querySelector(".bouton_moins");
-  const suivantButton = document.querySelector(".bouton_suivant");
-  const goButton = document.querySelector(".bouton_go");
+  const plusButton = document.querySelector(".btn_plus");
+  const moinsButton = document.querySelector(".btn_moins");
+  const suivantButton = document.querySelector(".btn_suivant");
+  const goButton = document.querySelector(".btn_go");
   const resetButton = document.querySelector("#resetTimer");
 
   plusButton.addEventListener("click", function () {
