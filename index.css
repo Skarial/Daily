@@ -24,25 +24,21 @@ header {
 }
 
 .titre {
-  animation: clignote 8s infinite;
-  background: repeating-radial-gradient(
-    circle farthest-side at center center,
-    rgba(68, 71, 69, 0.306) 0%,
-    #34c5cf 100%
-  );
   background-clip: text;
-  font-family: "Caprasimo", serif;
+  font-family: "Permanent Marker", cursive;
   font-size: 30px;
   margin: 0 auto;
   text-align: center;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: blink 12s infinite;
+  -webkit-animation: blink 12s infinite;
 }
 
 .paragraphe {
-  background: #d3d717;
+  background: #90bb2b;
   background-clip: text;
-  font-family: "Bungee Spice", sans-serif;
+  font-family: "Permanent Marker", cursive;
   font-size: 14px;
   text-align: center;
   -webkit-background-clip: text;
@@ -114,63 +110,53 @@ header {
   border: none;
 }
 
-@keyframes clignote {
-  0% {
-    color: rgba(46, 46, 46, 0.61);
-    text-shadow: 2px 2px 5px rgba(163, 154, 154, 0.5);
-    opacity: 1;
+@-webkit-keyframes blink {
+  20%,
+  24%,
+  55% {
+    color: #111;
+    text-shadow: none;
   }
-  5% {
-    background: #121fcf;
-    background: repeating-radial-gradient(
-      circle farthest-side at center center,
-      rgb(207 156 18) 0%,
-      #34c5cf 100%
-    );
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 30px #7763ec, 0 0 10px rgba(179, 161, 230, 0.41),
-      0 0 100px #3ca16a, 0 0 500px #2fc73e, 5px 9px 5px rgba(156, 154, 163, 0.5);
-    opacity: 1;
+
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    /*     color: #fccaff;
+    text-shadow: 0 0 5px #f562ff, 0 0 15px #f562ff, 0 0 25px #f562ff,
+      0 0 20px #f562ff, 0 0 30px #890092, 0 0 80px #890092, 0 0 80px #890092; */
+    text-shadow: 0 0 5px #078726, 0 0 15px #078726, 0 0 20px #ffa500,
+      0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+    color: #fff6a9;
   }
-  6% {
-    color: rgba(46, 46, 46, 0.61);
-    text-shadow: 2px 2px 5px rgba(163, 154, 154, 0.5);
+}
+
+@keyframes blink {
+  20%,
+  24%,
+  55% {
+    color: #111;
+    text-shadow: none;
   }
-  7.5% {
-    background: #121fcf;
-    background: repeating-radial-gradient(
-      circle farthest-side at center center,
-      rgb(207 156 18) 0%,
-      #34c5cf 100%
-    );
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 30px #7763ec, 0 0 10px rgba(179, 161, 230, 0.41),
-      0 0 100px #3ca16a, 0 0 500px #2fc73e, 5px 9px 5px rgba(156, 154, 163, 0.5);
-  }
-  12.5% {
-    color: rgba(46, 46, 46, 0.61);
-    text-shadow: 2px 2px 5px rgba(163, 154, 154, 0.5);
-  }
-  15% {
-    background: #121fcf;
-    background: repeating-radial-gradient(
-      circle farthest-side at center center,
-      rgb(207 156 18) 0%,
-      #34c5cf 100%
-    );
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 30px #7763ec, 0 0 10px rgba(179, 161, 230, 0.41),
-      0 0 100px #3ca16a, 0 0 500px #2fc73e, 5px 9px 5px rgba(156, 154, 163, 0.5);
-  }
-  22.5% {
-    color: rgba(46, 46, 46, 0.61);
-    text-shadow: 2px 2px 5px rgba(163, 154, 154, 0.5);
+
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    /*     color: #fccaff;
+    text-shadow: 0 0 5px #f562ff, 0 0 15px #f562ff, 0 0 25px #f562ff,
+      0 0 20px #f562ff, 0 0 30px #890092, 0 0 80px #890092, 0 0 80px #890092; */
+    text-shadow: 0 0 5px #078726, 0 0 15px #8aff00, 0 0 20px #8aff00,
+      0 0 40px #8aff00, 0 0 60px #ff0000, 0 0 10px #8aff00, 0 0 98px #ff0000;
+    color: #fff6a9;
   }
 }
 
