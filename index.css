@@ -36,14 +36,14 @@ header {
 }
 
 .paragraphe {
-  background: #90bb2b;
   background-clip: text;
   font-family: "Permanent Marker", cursive;
   font-size: 14px;
   text-align: center;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1px black;
+  animation: blink 5s infinite;
+  -webkit-animation: blink 5s infinite;
 }
 
 .media {
