@@ -85,13 +85,18 @@ header {
 .btn_suivant,
 .btn_go {
   font-size: 25px;
-  -webkit-text-stroke: 2px black;
 }
 
 .btn_plus,
 .btn_moins {
   margin-top: 2vh;
-  -webkit-text-stroke: 2px black;
+  font-size: 22px;
+}
+
+.btn_mute {
+  display: flex;
+  margin: 2vh auto;
+  text-align: center;
   font-size: 22px;
 }
 
@@ -108,6 +113,7 @@ header {
   cursor: pointer;
   background: none;
   border: none;
+  -webkit-text-stroke: 2px black;
 }
 
 @-webkit-keyframes blink {
