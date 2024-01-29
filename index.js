@@ -1,21 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const muteButton = document.querySelector(".btn_mute");
   let initialCount = 0;
   let count = 0;
   let timerTimeout;
   let isTimerRunning = false;
-  let isGoButtonClicked = false; // Nouvelle variable pour suivre l'état du bouton "GO"
+  let isGoButtonClicked = false;
   let bangSound = new Audio("assets/bang.wav");
   let ticTacSound = new Audio("assets/tictac2.wav");
   const display = document.querySelector("#time");
   const imgBombe = document.querySelector(".img_bombe");
   const suivantButton = document.querySelector(".btn_suivant");
+  const goButton = document.querySelector(".btn_go");
+  const plusButton = document.querySelector(".btn_plus");
+  const moinsButton = document.querySelector(".btn_moins");
 
-  const ticTacVolume = 0.2;
-  ticTacSound.volume = ticTacVolume;
-  const audioElementVolume = 1;
-  bangSound.volume = audioElementVolume;
-
-  // Ajout d'une variable pour suivre l'état initial du site
   let siteOpened = false;
 
   function updateTimerDisplay() {
@@ -66,16 +64,17 @@ document.addEventListener("DOMContentLoaded", function () {
     ticTacSound.play();
   }
 
-  const plusButton = document.querySelector(".btn_plus");
-  const moinsButton = document.querySelector(".btn_moins");
-  const goButton = document.querySelector(".btn_go");
-  const muteButton = document.querySelector(".btn_mute");
-
   plusButton.addEventListener("click", function () {
     if (!isTimerRunning) {
       count += 30;
       initialCount = count;
       updateTimerDisplay();
+
+      if (!siteOpened) {
+        siteOpened = true;
+        goButton.disabled = false;
+        suivantButton.disabled = false;
+      }
     }
   });
 
@@ -84,25 +83,36 @@ document.addEventListener("DOMContentLoaded", function () {
       count -= 30;
       initialCount = count;
       updateTimerDisplay();
-    }
-  });
 
-  goButton.addEventListener("click", function () {
-    if (!isTimerRunning && !isGoButtonClicked) {
-      startTimer(count);
-      isTimerRunning = true;
-      isGoButtonClicked = true; // Mettre à true après le premier clic sur le bouton "GO"
-
-      // Débloquer le bouton "suivant" après avoir appuyé sur le bouton "go" une première fois
       if (!siteOpened) {
         siteOpened = true;
+        goButton.disabled = false;
         suivantButton.disabled = false;
       }
     }
   });
 
-  // Désactiver le bouton "suivant" à l'ouverture du site
-  suivantButton.disabled = true;
+  function disablePlusMinusButtons() {
+    plusButton.disabled = true;
+    moinsButton.disabled = true;
+  }
+
+  function enablePlusMinusButtons() {
+    plusButton.disabled = false;
+    moinsButton.disabled = false;
+  }
+
+  goButton.addEventListener("click", function () {
+    if (!isTimerRunning && !isGoButtonClicked) {
+      startTimer(count);
+      isTimerRunning = true;
+      isGoButtonClicked = true;
+
+      goButton.disabled = true;
+
+      disablePlusMinusButtons();
+    }
+  });
 
   suivantButton.addEventListener("click", function () {
     resetTimer();
@@ -111,15 +121,16 @@ document.addEventListener("DOMContentLoaded", function () {
     startTimer(count);
   });
 
+  suivantButton.disabled = true;
+  goButton.disabled = true;
+
   muteButton.addEventListener("click", function () {
     if (bangSound.volume > 0 || ticTacSound.volume > 0) {
-      // Si le son est actuellement activé, le désactiver en mettant le volume à zéro
       bangSound.volume = 0;
       ticTacSound.volume = 0;
     } else {
-      // Si le son est actuellement désactivé, le réactiver en remettant le volume à sa valeur initiale
-      bangSound.volume = audioElementVolume;
-      ticTacSound.volume = ticTacVolume;
+      bangSound.volume = 1;
+      ticTacSound.volume = 1;
     }
   });
 
