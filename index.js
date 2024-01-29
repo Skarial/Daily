@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let timerTimeout;
   let isTimerRunning = false;
   let isGoButtonClicked = false;
+  let isNextButtonEnabled = false;
   let bangSound = new Audio("assets/bang.wav");
   let ticTacSound = new Audio("assets/tictac2.wav");
   const display = document.querySelector("#time");
@@ -44,6 +45,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     ticTacSound.pause();
     ticTacSound.currentTime = 0;
+
+    // Réactiver les boutons "Plus 30 secondes" et "Moins 30 secondes"
+    plusButton.disabled = false;
+    moinsButton.disabled = false;
   }
 
   function startTimer(duration) {
@@ -62,6 +67,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     update();
     ticTacSound.play();
+
+    // Désactiver les boutons "Plus 30 secondes" et "Moins 30 secondes" lorsque le minuteur démarre
+    plusButton.disabled = true;
+    moinsButton.disabled = true;
   }
 
   plusButton.addEventListener("click", function () {
@@ -73,7 +82,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!siteOpened) {
         siteOpened = true;
         goButton.disabled = false;
-        suivantButton.disabled = false;
+        suivantButton.disabled = true; // Bloquer le bouton "Suivant" à l'ouverture du site
+        isNextButtonEnabled = true;
       }
     }
   });
@@ -87,7 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!siteOpened) {
         siteOpened = true;
         goButton.disabled = false;
-        suivantButton.disabled = false;
+        suivantButton.disabled = true; // Bloquer le bouton "Suivant" à l'ouverture du site
+        isNextButtonEnabled = true;
       }
     }
   });
@@ -109,16 +120,20 @@ document.addEventListener("DOMContentLoaded", function () {
       isGoButtonClicked = true;
 
       goButton.disabled = true;
-
       disablePlusMinusButtons();
+
+      isNextButtonEnabled = true;
+      suivantButton.disabled = !isNextButtonEnabled; // Débloquer le bouton "Suivant" après avoir cliqué sur le bouton "GO"
     }
   });
 
   suivantButton.addEventListener("click", function () {
-    resetTimer();
-    bangSound.pause();
-    bangSound.currentTime = 0;
-    startTimer(count);
+    if (isNextButtonEnabled) {
+      resetTimer();
+      bangSound.pause();
+      bangSound.currentTime = 0;
+      startTimer(count);
+    }
   });
 
   suivantButton.disabled = true;
@@ -130,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
       ticTacSound.volume = 0;
     } else {
       bangSound.volume = 1;
-      ticTacSound.volume = 1;
+      ticTacSound.volume = 0.1;
     }
   });
 
